@@ -1,0 +1,70 @@
+*{outline: none !important;}
+
+.productBookingMain{
+    padding-top: 120px;
+    width: 100%;
+    height: 667px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('./../../img/Rectangle.png') no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.bookingLeft{
+    width: 40%;
+}
+
+.bookingRight{
+    width: 60%;
+}
+
+.bookingForm{
+    width: 350px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.bookingForm label{
+    color: #575757;
+    margin-top: 10px;
+}
+
+.inputControl{
+    width: 100%;
+}
+
+.bookingForm input, select{
+    background-color: #F2F2F2;
+    border: none;
+    padding: 8px 17px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    border-radius: 3px;
+    -webkit-appearance: none;
+}
+.inputControl input[type="date"]{
+    width: 100%;
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+.inputControl input:focus{
+    padding: 7px 16px;
+    border: 1px solid #F9A51A;
+}
+
+.inputControl select:focus{
+    padding: 7px 16px;
+    border: 1px solid #F9A51A;
+}
+
+#fromSubmit{
+    background-color: #F9A51A;
+    font-weight: normal;
+}
+
+.submitBooking{
+    text-decoration: none !important;
+}

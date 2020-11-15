@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.bannerMain{
+    width: 100%;
+    height: 667px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('./../../img/Rectangle.png') no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.bannerCarousel{
+    display: flex;
+}
+
+.bannerCarouselLeftText{
+    margin-top: 250px !important;
+}
+
+.bannerCarouselLeftBtn{
+    background-color: #F9A51A !important;
+    color: black !important;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: none !important;
+}
+
+.bannerCarouselLeftHeader{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 80px;
+}
+
+.activeSliderItem{
+    border: 3px solid #F9A51A;
+}
+
+.bannerCarouselRight{
+    margin-top: 140px;
+    margin-left: 385px;
+    display: flex;
+    width: auto;
+    position: absolute;
+}
+
+.bannerCarouselRightSection{
+    width: 240px;
+    height: 370px;
+    position: relative;
+    margin-right: 40px;
+    border-radius: 10px;
+}
+
+.carousel-inner .bannerCarouselRightSection:last-child{
+    margin-right: 0 !important;
+}
+
+.bannerCarouselRightSection img{
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.bannerCarouselRightItems{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    color: rgb(245, 245, 245) !important;
+    width: 98%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(185deg, rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 0%) 15%, rgb(255 255 255 / 0%) 21%, rgb(255 255 255 / 0%) 35%, rgb(0 0 0 / 0%) 44%, rgb(255 255 255 / 0%) 59%, rgb(0 0 0 / 95%) 100%);
+    text-align: left;
+}
+.bannerCarouselRightItems span{
+    display: block;
+    margin-top: 320px;
+    margin-left: 20px;
+}
+
+.carouselChangeBtn{
+    margin: 0 auto;
+}
+
+.carouselChangeBtn button{
+    background-color: #FFFFFF;
+    border: none;
+    color: #000000;
+    border-radius: 50%;
+    margin-top: 50px;
+    padding: 8px 12px;
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.sliderImg{
+    width: auto !important;
+    height: 100% !important;
+    position: absolute;
+    clip: rect(0px, 234px, 388px, 0px);
+    border-radius: 8px;
+}
+
+.carousel-caption{
+    margin: 0 auto !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+}
+
+
+
