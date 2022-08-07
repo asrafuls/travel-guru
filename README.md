@@ -6,11 +6,11 @@
 ### `This web site create by using`
 
 
-Language | Framework | Library | Tools |  |
---- | --- | --- | --- |  |
-HTML | Bootstrap | React |  VS Code  |  |
-CSS |  |  | Git |  |
-Javascript |  |  |  |  |
+Language | Framework | Library | Tools |
+--- | --- | --- | --- |
+HTML | Bootstrap | React |  VS Code  |
+CSS |  |  | Git |
+Javascript |  |  |  |
 
 
 
