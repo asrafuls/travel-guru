@@ -7,9 +7,11 @@
 ### `This web site create by using`
 
 
-Attempt | #1 | #2 |
+Language | Framework | Library |
 --- | --- | --- | 
-Seconds | 301 | 283 |
+HTML | Bootstrap | React |
+CSS |  |  |
+Javascript |  |  |
 
 
 
