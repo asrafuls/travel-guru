@@ -6,7 +6,7 @@ const ConfirmBook = () => {
     return (
         <div className='ConfirmBookMain'>
             <div className="container">
-                <div className="bookingHeading text-left">
+                <div className="bookingHeading text-start">
                     <span className="">252 stays Apr 13-17 3 guests</span>
                     <h3>Stay in Cox’s Bazar</h3>
                 </div>

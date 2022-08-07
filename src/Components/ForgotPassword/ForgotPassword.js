@@ -18,7 +18,7 @@ const ForgotPassword = () => {
     return (
         <div className="forgotPassword">
             <div className="container">
-                <form onSubmit={handelForgotPassword} action="" className="forgotPassForm text-left">
+                <form onSubmit={handelForgotPassword} action="" className="forgotPassForm text-start">
                     <h3 className="">Forgot Password</h3>
                     <br/>
                     <TextField onChange={(e) => setEmail(e.target.value)} label='Type your email'/>

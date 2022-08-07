@@ -5,38 +5,59 @@ import {
   Route
 } from "react-router-dom";
 import Header from './Components/Header/Header';
-import Banner from './Components/Banner/Banner.js';
+import Banner from './Components/Home/Banner/Banner';
 import BooksProduct from './Components/BooksProduct/BooksProduct'
 import Login from './Components/Login/Login';
 import ConfirmBook from './Components/ConfirmBook/ConfirmBook';
 import { AuthContextProvider, PrivateRoute } from './authenticationMenager/authentication';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
+import ErrorPage from './Components/ErrorPage/ErrorPage';
+import HomeBooking from './Components/HomeBooking/HomeBooking';
+import { useState } from 'react';
+import TourPackages from './Components/TourPackages/TourPackages';
+import TourItem from './Components/TourItem/TourItem';
 
 function App() {
+
+  const [, setLoading] = useState(true)
+
+
   return (
     <div className="App">
       <Router>
         <AuthContextProvider>
-          <Header />
           <Switch>
+            <Route path="/tour/:itemId">
+              <Header />
+              <TourItem />
+            </Route>
+            <Route path="/tour-packages">
+              <Header />
+              <TourPackages />
+            </Route>
             <Route path="/book">
+              <Header />
               <BooksProduct />
             </Route>
             <Route path="/login">
               <Login />
             </Route>
             <Route path="/forgotpassword">
-              <ForgotPassword/>
+              <ForgotPassword />
             </Route>
             <PrivateRoute path="/booking">
+              <Header />
               <ConfirmBook />
             </PrivateRoute>
             <Route exact path="/">
-              <Banner />
+              <Header />
+              <Banner setLoading={setLoading} />
+              <HomeBooking />
             </Route>
             <Route path="*">
-              Error
-          </Route>
+              <Header />
+              <ErrorPage />
+            </Route>
           </Switch>
         </AuthContextProvider>
       </Router>

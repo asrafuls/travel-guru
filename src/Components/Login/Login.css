@@ -2,15 +2,6 @@
     padding-top: 100px;
 }
 
-.loginForm{
-    width: 470px;
-    padding: 20px 30px;
-    margin: 0 auto;
-    text-align: left !important;
-    border: 1px solid #D5D5D5;
-    border-radius: 8px;
-}
-
 .MuiFormControl-root{
     width: 100% !important;
 }
@@ -22,10 +13,10 @@
 .MuiInput-root{
     width: 100% !important;
 }
-
+/* 
 .loginForm input{
     width: 100% !important;
-}
+} */
 
 .loginFormSubmit{
     width: 100% !important;
@@ -33,47 +24,14 @@
     background: #F9A51A !important;
 }
 
-.loginFromCheckAndForgot label{
-    color: #555555;
-    margin-right: 120px;
-}
-
-.loginFromCheckAndForgot a{
-    color: #F9A51A;
-    cursor: pointer;
-}
-
-.loginFromCheckAndForgot span:hover{
-    text-decoration: underline;
-}
-
-.loginOtherLoginBtn{
-    width: 400px;
-    border: 1px solid #D5D5D5 !important;
-    border-radius: 40px !important;
-    margin-bottom: 20px !important;
-}
-
-.loginFormChange{
-    margin-top: 20px;
-    text-align: center;
-    cursor: pointer;
-}
 
 .loginWithGoogle{
     margin-bottom: 0px !important;
 }
 
-.loginFormChange span{
-    color: #F9A51A;
-}
-
-.loginFormChange span:hover{
-    text-decoration: underline;
-}
 
 .loginBottomOrSection{
-    width: 350px !important;
+    width: 260px !important;
     margin: 10px auto;
     margin-bottom: 23px;
 }

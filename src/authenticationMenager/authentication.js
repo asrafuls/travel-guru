@@ -30,13 +30,13 @@ export const PrivateRoute = ({ children, ...rest }) => {
         auth.user ? (
           children
         ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: location }
-              }}
-            />
-          )
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        )
       }
     />
   );
@@ -73,8 +73,8 @@ const Auth = () => {
         //   displayName: name,
         //   // photoURL: 'https://www.w3schools.com/w3images/avatar2.png'
         // }).then(res => {
-          const usr = getUser(res.user)
-          setUser(usr)
+        const usr = getUser(res.user)
+        setUser(usr)
         // })
       })
       .catch(err => {
@@ -100,13 +100,14 @@ const Auth = () => {
     firebase.auth().signOut()
       .then(res => {
         setUser(null)
+        window.location.reload()
       })
       .catch(err => {
         console.log(err.message)
       })
   }
   useEffect(() => {
-    firebase.auth().onAuthStateChanged( (usr) => {
+    firebase.auth().onAuthStateChanged((usr) => {
       if (usr) {
         const currentUser = getUser(usr)
         setUser(currentUser)

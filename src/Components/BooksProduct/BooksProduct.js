@@ -19,13 +19,13 @@ const BooksProduct = () => {
     return (
         <div className='productBookingMain'>
             <div style={{ display: 'flex' }} className="container">
-                <div className="bookingLeft text-left text-light">
+                <div className="bookingLeft text-start text-light">
                     <br/><br/><br/>
                     <h1 className="">Cox's bazar</h1>
                     <span>Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island.</span>
                 </div>
                 <div className="bookingRight">
-                    <form className="bookingForm text-left">
+                    <form className="bookingForm text-start">
                         <div className="inputControl">
                             <label htmlFor="fromOrigin">Origin</label><br />
                             <select style={{ width: '100%' }} id='fromOrigin' type="text" name='origin' className="bookingFormOrigin" >
