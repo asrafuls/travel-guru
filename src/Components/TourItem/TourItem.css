@@ -1,0 +1,26 @@
+.tour-item-booking-calendar{
+    position: absolute;
+    z-index: 11111111;
+    width: 100%;
+}
+
+.carousel .slide div{
+    height: 500px !important;
+}
+
+.carousel .slide img{
+    transition: all .3s;
+    height: inherit !important;
+}
+
+.carousel .slide:hover img{
+    transform: scale(1.1);
+}
+
+.carousel .thumb{
+    height: 50px !important;
+}
+
+.carousel .thumb img{
+    height: 100% !important;
+}

@@ -1,0 +1,49 @@
+.loginMain{
+    padding-top: 100px;
+}
+
+.MuiFormControl-root{
+    width: 100% !important;
+}
+
+.loginFromCtrl{
+    width: 100% !important;
+}
+
+.MuiInput-root{
+    width: 100% !important;
+}
+/* 
+.loginForm input{
+    width: 100% !important;
+} */
+
+.loginFormSubmit{
+    width: 100% !important;
+    padding: 10px;
+    background: #F9A51A !important;
+}
+
+
+.loginWithGoogle{
+    margin-bottom: 0px !important;
+}
+
+
+.loginBottomOrSection{
+    width: 260px !important;
+    margin: 10px auto;
+    margin-bottom: 23px;
+}
+
+.loginBottomOrSection span{
+    padding: 0 5px;
+    background-color: #ffffff;
+}
+
+.loginBottomOrSection div{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(53, 53, 53);
+    margin-top: -13px;
+}
