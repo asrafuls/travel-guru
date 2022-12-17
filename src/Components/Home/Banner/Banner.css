@@ -114,6 +114,10 @@
 
 /* React alice carousel */
 
+.alice-carousel{
+    text-align: center !important;
+}
+
 .alice-carousel__prev-btn-item,
 .alice-carousel__next-btn-item {
     background: #fff;

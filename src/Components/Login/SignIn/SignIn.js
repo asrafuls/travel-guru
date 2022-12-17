@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../../authenticationMenager/authentication';
+import { useContextItems } from '../../../contextApiMenager/contextApiMenager';
 import { Button, Checkbox, TextField } from '@material-ui/core';
 
 const SignIn = ({ setSingIn }) => {
@@ -9,7 +9,7 @@ const SignIn = ({ setSingIn }) => {
     const [password, setPassword] = useState(null)
     const [cPassword, setCPassword] = useState(null)
 
-    const auth = useAuth()
+    const auth = useContextItems()
     const { passwordSignIn } = auth;
 
 

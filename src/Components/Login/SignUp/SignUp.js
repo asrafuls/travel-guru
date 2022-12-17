@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../../authenticationMenager/authentication';
+import { useContextItems } from '../../../contextApiMenager/contextApiMenager';
 import { Button, TextField } from '@material-ui/core';
 
 const SignUp = ({ setSingIn }) => {
@@ -11,7 +11,7 @@ const SignUp = ({ setSingIn }) => {
     const [emailPrimaryVerify, setEmailPrimaryVerify] = useState(false)
     const [passwordPrimaryVerify, setPasswordPrimaryVerify] = useState(false)
 
-    const auth = useAuth()
+    const auth = useContextItems()
     const { passwordSignUp } = auth;
 
 

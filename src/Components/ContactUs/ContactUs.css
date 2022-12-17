@@ -1,0 +1,20 @@
+.contact-us-page{
+    padding-top: 80px !important;
+}
+
+.contact-us-header-col{
+    height: 200px;
+    background-image: url("https://images.pexels.com/photos/7709297/pexels-photo-7709297.jpeg");
+    background-position: center;
+    background-size: cover;
+    font-family: 'DynaPuff', cursive;
+}
+
+.contact-us-header-col > div{
+    background-color: rgba(0, 0, 0, 50%);
+}
+
+.contact-us-contact-col{
+    margin-top: 130px !important;
+    margin-bottom: 150px !important;
+}

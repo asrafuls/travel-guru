@@ -1,11 +1,11 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
-import { useAuth } from '../../authenticationMenager/authentication';
+import { useContextItems } from '../../contextApiMenager/contextApiMenager';
 import './ForgotPassword.css'
 
 const ForgotPassword = () => {
 
-    const auth = useAuth()
+    const auth = useContextItems()
 
     const [ email, setEmail ] = useState('')
 

@@ -16,6 +16,9 @@ const TourItem = () => {
     const [itemError, setItemError] = useState(false)
     const [itemErrorMsg, setItemErrorMsg] = useState(null)
     const [travelers, setTravelers] = useState(null)
+    const [travelersAdalt, setTravelersAdalt] = useState(null)
+    const [travelersChildren, setTravelersChildren] = useState(null)
+    const [travelersInfant, setTravelersInfant] = useState(null)
 
     const [bookingData, setBookingDate] = useState(false)
 
@@ -29,6 +32,10 @@ const TourItem = () => {
         axios.get(`/tour-item/${itemId}`)
             .then(data => {
                 setTourItemData(data.data)
+                setTravelers(data.data.travelers)
+                setTravelersAdalt(1)
+                setTravelersChildren(1)
+                setTravelersInfant(1)
                 setLoading(false)
             })
             .catch(error => {
@@ -38,20 +45,65 @@ const TourItem = () => {
     }, [itemId])
 
 
-    // Set Default Travelers
-    useEffect(() => {
-        if (tourItemData) {
-            setTravelers(tourItemData.travelers)
+    // Handle Travelers Add Or Remove
+    const handleTravelersAddOrRemove = ({ id, action }) => {
+        const actionItem = tourItemData.travelers.find(dt => dt.id === id)
+        if (action === "plus") {
+            if (id === 'ad') {
+                if (travelersAdalt >= actionItem?.end) {
+                    setTravelersAdalt(actionItem?.end)
+                } else if (travelersAdalt < actionItem?.end) {
+                    setTravelersAdalt(travelersAdalt + 1)
+                }
+            } else if (id === 'ch') {
+                if (travelersChildren >= actionItem?.end) {
+                    setTravelersChildren(actionItem?.end)
+                } else if (travelersChildren < actionItem?.end) {
+                    setTravelersChildren(travelersChildren + 1)
+                }
+            } else if (id === 'in') {
+                if (travelersInfant >= actionItem?.end) {
+                    setTravelersInfant(actionItem?.end)
+                } else if (travelersInfant < actionItem?.end) {
+                    setTravelersInfant(travelersInfant + 1)
+                }
+            } else {
+                setTravelersAdalt(travelersAdalt)
+                setTravelersChildren(travelersChildren)
+                setTravelersInfant(travelersInfant)
+            }
+        } else if (action === "minus") {
+            if (id === 'ad') {
+                if (travelersAdalt <= 1) {
+                    setTravelersAdalt(1)
+                } else if (travelersAdalt > 1) {
+                    setTravelersAdalt(travelersAdalt - 1)
+                }
+            } else if (id === 'ch') {
+                if (travelersChildren <= 1) {
+                    setTravelersChildren(1)
+                } else if (travelersChildren > 1) {
+                    setTravelersChildren(travelersChildren - 1)
+                }
+            } else if (id === 'in') {
+                if (travelersInfant <= 1) {
+                    setTravelersInfant(1)
+                } else if (travelersInfant > 1) {
+                    setTravelersInfant(travelersInfant - 1)
+                }
+            } else {
+                setTravelersAdalt(travelersAdalt)
+                setTravelersChildren(travelersChildren)
+                setTravelersInfant(travelersInfant)
+            }
+        } else {
+            setTravelersAdalt(travelersAdalt)
+            setTravelersChildren(travelersChildren)
+            setTravelersInfant(travelersInfant)
         }
-    }, [tourItemData])
-
-    // Handle 
-    const handlePassengersAddOrRemove = ({id, action}) => {
-        const findItem = travelers.find(dt => dt.id === id)
-        console.log(findItem)
     }
 
-    console.log(tourItemData?.travelers)
+    console.log(travelersAdalt, travelersChildren, travelersInfant)
 
     return (
         <div className='tour-item-page container' style={{ paddingTop: "100px" }}>
@@ -95,7 +147,7 @@ const TourItem = () => {
                                                         <h4 className='text-dark'>{tourItemData.title}</h4>
                                                         <h6 className='text-danger mt-3'>
                                                             <span className="me-2"><FontAwesomeIcon icon={faLocationDot} /></span>
-                                                            <span className=''>{tourItemData?.destinations?.map(dt => (<span>{dt}</span>))}</span>
+                                                            <span className=''>{tourItemData?.destinations?.map(dt => (<span className='pb-1 rounded px-2 bg-secondary text-light me-2'>{dt} </span>))}</span>
                                                         </h6>
                                                         <div className="mt-4 mb-4 card">
                                                             <div className="card-body text-start">
@@ -134,7 +186,7 @@ const TourItem = () => {
                                                                         {
                                                                             bookingData &&
                                                                             <div className="tour-item-booking-calendar w-100">
-                                                                                <Calendar className="w-100"/>
+                                                                                <Calendar className="w-100" />
                                                                             </div>
                                                                         }
                                                                     </div>
@@ -149,11 +201,11 @@ const TourItem = () => {
                                                                                     <div className="tour-item-booking-travelers-adalt d-flex mb-2">
                                                                                         <h6 className='col-6'>{dt.name}</h6>
                                                                                         <div className="col-6">
-                                                                                            <button type="button" class="btn btn-warning text-light btn-sm me-3" onClick={() => handlePassengersAddOrRemove({ id: dt.id, action: "plus" })}>
+                                                                                            <button type="button" class="btn btn-warning text-light btn-sm me-3" onClick={() => handleTravelersAddOrRemove({ id: dt.id, action: "minus" })}>
                                                                                                 <FontAwesomeIcon icon={faMinus} />
                                                                                             </button>
-                                                                                            <span>{dt.person}</span>
-                                                                                            <button type="button" class="btn btn-warning text-light btn-sm ms-3" onClick={() => handlePassengersAddOrRemove({ id: dt.id, action: "minus" })}>
+                                                                                            <span>{dt.id === "ad" ? travelersAdalt : dt.id === "ch" ? travelersChildren : dt.id === "in" ? travelersInfant : "0"}</span>
+                                                                                            <button type="button" class="btn btn-warning text-light btn-sm ms-3" onClick={() => handleTravelersAddOrRemove({ id: dt.id, action: "plus" })}>
                                                                                                 <FontAwesomeIcon icon={faPlus} />
                                                                                             </button>
                                                                                         </div>

@@ -24,3 +24,7 @@
 .carousel .thumb img{
     height: 100% !important;
 }
+
+.carousel .thumbs-wrapper{
+    text-align: center;
+}

@@ -1,7 +1,7 @@
-import { Button, Checkbox, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useAuth } from '../../authenticationMenager/authentication';
+import { useContextItems } from '../../contextApiMenager/contextApiMenager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import './Login.css'
@@ -18,7 +18,7 @@ const Login = () => {
 
     const [singIn, setSingIn] = useState(true)
 
-    const auth = useAuth()
+    const auth = useContextItems()
     const { googleSignIn, passwordSignUp } = auth;
 
 

@@ -1,19 +1,19 @@
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../firebase.config';
-import { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import axios from 'axios';
 
 
 firebase.initializeApp(firebaseConfig)
 
 const AuthContext = createContext()
 export const AuthContextProvider = (props) => {
-  const auth = Auth();
+  const auth = ContextItems();
   return <AuthContext.Provider value={auth}> {props.children} </AuthContext.Provider>
 }
-export const useAuth = () => useContext(AuthContext);
+export const useContextItems = () => useContext(AuthContext);
 
 const getUser = (user) => {
   const { displayName, email, photoUrl } = user;
@@ -22,7 +22,7 @@ const getUser = (user) => {
 
 
 export const PrivateRoute = ({ children, ...rest }) => {
-  let auth = useAuth();
+  let auth = useContext();
   return (
     <Route
       {...rest}
@@ -42,11 +42,19 @@ export const PrivateRoute = ({ children, ...rest }) => {
   );
 }
 
-const Auth = () => {
-
-  const [error, setError] = useState(null)
+const ContextItems = () => {
 
   const [user, setUser] = useState(null)
+  const [bannerItems, setBannerItems] = useState(null)
+  const [tourItems, setTourItems] = useState(null)
+  const [destinasonItems, setDestinasonItems] = useState(null)
+  const [error, setError] = useState(null)
+
+
+  const [searchResult, setSearchResult] = useState(null)
+
+  const [homeLoading, setHomeLoading] = useState(true)
+
 
   const googleSignIn = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -106,6 +114,7 @@ const Auth = () => {
         console.log(err.message)
       })
   }
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((usr) => {
       if (usr) {
@@ -117,14 +126,106 @@ const Auth = () => {
     });
   }, [])
 
+
+  // Get Websites Neded Datas Form Db
+  useEffect(() => {
+    // Banner Items
+    axios.get("/banner-items")
+      .then(res => {
+        setBannerItems({
+          status: 200,
+          data: res.data
+        })
+      })
+      .catch(error => {
+        setBannerItems({
+          status: 400,
+          data: error.message
+        })
+      })
+
+    // Banner Items
+    axios.get("/tour-items")
+      .then(res => {
+        setTourItems({
+          status: 200,
+          data: res.data
+        })
+      })
+      .catch(error => {
+        setTourItems({
+          status: 400,
+          data: error.message
+        })
+      })
+
+    // Destinason Items
+    axios.get("/destinason-items")
+      .then(res => {
+        setDestinasonItems({
+          status: 200,
+          data: res.data
+        })
+      })
+      .catch(error => {
+        setDestinasonItems({
+          status: 400,
+          data: error.message
+        })
+      })
+  }, [])
+
+
+
+  // Handle Search Items
+  const handleSearchItems = (inputData) => {
+    if (tourItems?.data && inputData?.length > 1) {
+      const filteredItems = tourItems?.data.filter(dt => {
+        if (dt.title.toLowerCase().includes(inputData)) {
+          return dt
+        } else {
+          return null
+        }
+      })
+      if (filteredItems.length) {
+        setSearchResult(filteredItems)
+      } else {
+        setSearchResult(null)
+      }
+    } else {
+      setSearchResult(null)
+    }
+  }
+
+  // Handle Home Loading
+  useEffect(() => {
+    if (bannerItems && tourItems && destinasonItems) {
+      setHomeLoading(false)
+    } else {
+      setHomeLoading(true)
+    }
+  }, [bannerItems, destinasonItems, tourItems])
+
+
+  // console.log(user,
+  //   bannerItems,
+  //   tourItems,
+  //   destinasonItems)
+
   return {
     user,
+    bannerItems,
+    tourItems,
+    destinasonItems,
     error,
+    homeLoading,
     googleSignIn,
     facebookSignIn,
     passwordSignUp,
     passwordSignIn,
     forgotPassword,
+    searchResult,
+    handleSearchItems,
     singOut
   }
 }

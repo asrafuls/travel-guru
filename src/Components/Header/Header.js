@@ -4,13 +4,14 @@ import logo from './../../logo/Logo.png';
 import logoDarkImg from './../../logo/LogoDark.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useAuth } from './../../authenticationMenager/authentication';
+import { useContextItems } from '../../contextApiMenager/contextApiMenager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-    const { user, singOut } = useAuth()
+    const { user, tourItems, singOut } = useContextItems()
 
     const [logoDark, setLogoDark] = useState(true)
     const locationPath = window.location.pathname;
@@ -19,14 +20,32 @@ const Header = () => {
         if (locationPath === '/') {
             setLogoDark(false)
             document.querySelector('#header').classList.remove('textDark')
+        } else {
+            setLogoDark(true)
+            document.querySelector('#header').classList.add('textDark')
         }
-    }, [])
+    }, [locationPath])
+
+    console.log(tourItems?.data)
+
+    useEffect(() => {
+        if (tourItems?.data) {
+            const fisf = tourItems?.data.filter(dt => {
+                if (dt.title.toLowerCase().includes("c")) {
+                    return dt
+                } else {
+                    return null
+                }
+            })
+            console.log(fisf)
+        }
+    }, [tourItems])
 
     return (
         <div id='header' className='headerMain textDark'>
             <div className='container'>
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="/">
+                    <Link class="navbar-brand" to="/">
                         {
                             logoDark ?
                                 <>
@@ -37,7 +56,7 @@ const Header = () => {
                                     <img style={{ width: '90px' }} src={logo} alt="Travel Guru Dark" />
                                 </>
                         }
-                    </a>
+                    </Link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -48,16 +67,16 @@ const Header = () => {
                         </from>
                         <ul class="navbar-nav headerMenu">
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="/tour-packages">Tours</a>
+                                <Link class="nav-link text-light" to="/tour-packages">Tours</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="/hotels">Hotels</a>
+                                <Link class="nav-link text-light" to="/hotels">Hotels</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="/contact">Contact</a>
+                                <Link class="nav-link text-light" to="/contact-us">Contact</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="/flight">Flight</a>
+                                <Link class="nav-link text-light" to="/flight">Flight</Link>
                             </li>
                             <li class="nav-item active">
                                 {

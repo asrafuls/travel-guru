@@ -1,0 +1,9 @@
+
+.admin-menu-actived{
+    background-color: rgba(41, 141, 255, 0.664) !important;
+    color: #fff !important;
+}
+
+.admin-nav-item > b{
+    text-align: left !important;
+}

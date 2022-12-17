@@ -1,6 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 
 const BookingHotel = () => {
+
+    const [hotelsDrop, setHotelsDrop] = useState(false)
+    const [checkInDrop, setCheckInDrop] = useState(false)
+    const [checkOutDrop, setCheckOutDrop] = useState(false)
+    const [pesangerDrop, setPesangerDrop] = useState(false)
 
     // // Hotel Items
     // const hotelsDb = [
@@ -402,7 +408,7 @@ const BookingHotel = () => {
     //     }
     // ]
 
-    
+
     // // Tour Pacages
     // const toreItems = [
     //     {
@@ -472,22 +478,53 @@ const BookingHotel = () => {
     //     },
     // ]
 
+
+    // Handle Dropdown
+    const handleDropDown = (item) => {
+        if (item === 'hotels') {
+            if (hotelsDrop) {
+
+            } else {
+
+            }
+        } else if (item === 'chack-in-date') {
+            if (checkInDrop) {
+
+            } else {
+
+            }
+        } else if (item === 'chack-out-date') {
+            if (checkOutDrop) {
+
+            } else {
+
+            }
+        } else if (item === 'pesanger') {
+            if (pesangerDrop) {
+
+            } else {
+
+            }
+        } else {
+
+        }
+    }
+
+
     return (
         <div className='booking-section-flight mt-5 row'>
             <div className="col-4 border bg-light p-2 text-start rounded">
-                <div class="dropdown">
-                    <button class="w-100 p-2 text-start bg-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ border: "none" }}>
-                        <small className='text-uppercase'>Enter Hotel Name</small>
-                        <h5>Hotel The Cox Today</h5>
-                        <small className=' text-uppercase'><b>Cox's Bazar,</b> Bangladesh</small>
-                    </button>
-                    <ul class="dropdown-menu w-100">
+                <button class="w-100 p-2 text-start bg-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ border: "none" }}>
+                    <small className='text-uppercase'>Hotel</small>
+                    <h5>Hotel The Cox Today</h5>
+                    <small className=' text-uppercase'><b>Cox's Bazar,</b> Bangladesh</small>
+                </button>
+                {
+                    hotelsDrop &&
+                    <div className="">
 
-                        <li><a class="dropdown-item" href="/">Action</a></li>
-                        <li><a class="dropdown-item" href="/">Another action</a></li>
-                        <li><a class="dropdown-item" href="/">Something else here</a></li>
-                    </ul>
-                </div>
+                    </div>
+                }
             </div>
             <div className="col-4">
                 <div className=" border bg-light p-2 text-start w-100 rounded d-flex">
